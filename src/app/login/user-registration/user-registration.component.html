@@ -1,0 +1,323 @@
+<app-header></app-header>
+<div class="container-fluid vh-100">
+  <div class="row">
+    
+
+    <div class="col-md-6 vh-100 text-center mob-img-drop">
+      <img
+        class="registration-img"
+        src="assets/images/registration.jpg"
+        alt=""
+      />
+    </div>
+
+    <div class="col-md-6 my-auto mx-auto">
+        <mat-card class="example-card mx-2">
+          <mat-card-header class="mt-3">
+            <mat-card-title>
+              <span class="title-head">Registration</span>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="my-3">
+            <div class="container-fluid">
+              <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                  <div class="col-md-4" *ngIf="isStudent">
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width"
+                    >
+                      <mat-label>Usertype</mat-label>
+                      <mat-select
+                        formControlName="userType"
+                        (selectionChange)="selectedUserType($event)"
+                      >
+                        <mat-option
+                          *ngFor="let type of usertypes"
+                          [value]="type.value"
+                        >
+                          {{ type.name }}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="f.userType.errors">
+                        <span *ngIf="f.userType.errors.required">
+                          Usertype required
+                        </span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="col" *ngIf="!isStudent">
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width"
+                    >
+                      <mat-label>Usertype</mat-label>
+                      <mat-select
+                        formControlName="userType"
+                        (selectionChange)="selectedUserType($event)"
+                      >
+                        <mat-option
+                          *ngFor="let type of usertypes"
+                          [value]="type.value"
+                        >
+                          {{ type.name }}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="f.userType.errors">
+                        <span *ngIf="f.userType.errors.required">
+                          Usertype required
+                        </span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="col-md-4" *ngIf="isStudent">
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width"
+                    >
+                      <mat-label>Standard</mat-label>
+                      <mat-select formControlName="std">
+                        <mat-option
+                          *ngFor="let standard of Standards"
+                          [value]="standard.standardId"
+                        >
+                          Class {{ standard.standard }}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="f.std.errors">
+                        <span *ngIf="f.std.errors.required">
+                          Standard required
+                        </span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="col-md-4" *ngIf="isStudent">
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width"
+                    >
+                      <mat-label>School Name</mat-label>
+  
+                      <input
+                        matInput
+                        type="text"
+                        formControlName="schoolOrCollege"
+                      />
+  
+                      <mat-error *ngIf="f.schoolOrCollege.errors">
+                        <span *ngIf="f.schoolOrCollege.errors.required">
+                          School required
+                        </span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width"
+                    >
+                      <mat-label>Username</mat-label>
+  
+                      <input
+                        matInput
+                        type="text"
+                        Placeholder="username"
+                        formControlName="userName"
+                      />
+  
+                      <mat-error *ngIf="f.userName.errors">
+                        <span *ngIf="f.userName.errors.required">
+                          Username required
+                        </span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="col-md-4">
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width"
+                    >
+                      <mat-label>Mobile</mat-label>
+  
+                      <input
+                        matInput
+                        type="text"
+                        Placeholder="mobileNo"
+                        formControlName="mobileNo"
+                      />
+  
+                      <mat-error *ngIf="f.mobileNo.errors">
+                        <span *ngIf="f.mobileNo.errors.required">
+                          Mobile required
+                        </span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="col-md-4">
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width"
+                    >
+                      <mat-label>E-mail</mat-label>
+  
+                      <input
+                        matInput
+                        type="text"
+                        Placeholder="Email"
+                        formControlName="email"
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Date Of Birth</mat-label>
+                      <input
+                        matInput
+                        [matDatepicker]="picker"
+                        formControlName="dob"
+                      />
+                      <mat-datepicker-toggle
+                        matSuffix
+                        [for]="picker"
+                      ></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                      <mat-error *ngIf="f.dob.errors">
+                        <span *ngIf="f.dob.errors.required"> required </span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="col-md-4">
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width"
+                    >
+                      <mat-label>Password</mat-label>
+  
+                      <input
+                        matInput
+                        type="password"
+                        Placeholder="Password"
+                        formControlName="password"
+                      />
+  
+                      <mat-error *ngIf="f.password.errors">
+                        <span *ngIf="f.password.errors.required">
+                          Password required
+                        </span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="col-md-4">
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width"
+                    >
+                      <mat-label>Confirm password</mat-label>
+  
+                      <input
+                        matInput
+                        type="password"
+                        Placeholder="Password"
+                        formControlName="confirmPassword"
+                      />
+  
+                      <mat-error *ngIf="f.confirmPassword.errors">
+                        <span *ngIf="f.confirmPassword.errors.required">
+                          required
+                        </span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="pt-3">
+                      <mat-label> Gender </mat-label>
+                    </div>
+                    <div class="mt-3">
+                      <mat-radio-group
+                        aria-label="Gender"
+                        formControlName="gender"
+                      >
+                        <mat-radio-button class="mx-2" value="male"
+                          >Male</mat-radio-button
+                        >
+                        <mat-radio-button class="mx-2" value="female"
+                          >Female</mat-radio-button
+                        >
+                        <mat-radio-button class="mx-2" value="transgender"
+                          >Transgender</mat-radio-button
+                        >
+                      </mat-radio-group>
+                    </div>
+                  </div>
+  
+                  <div class="col-md-6">
+                    <mat-form-field
+                      class="example-full-width"
+                      appearance="outline"
+                    >
+                      <mat-label>Address</mat-label>
+                      <textarea
+                        matInput
+                        placeholder="Ex. Hyderabad"
+                        formControlName="address"
+                      ></textarea>
+  
+                      <mat-error *ngIf="f.address.errors">
+                        <span *ngIf="f.address.errors.required">
+                          Address required
+                        </span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+  
+                <div class="row text-center mt-4">
+                  <div class="col">
+                    <button type="submit" mat-raised-button class="mx-2 btn-bg">
+                      Submit
+                    </button>
+                    <button
+                      mat-raised-button
+                      class="mx-2 warn-bg"
+                      (click)="onReset()"
+                    >
+                      reset
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </mat-card-content>
+          <mat-card-actions class="text-center">
+            <p>
+              <span>
+                <span class="mini-text">Already User ?</span>
+                <a routerLink="/login/user-login" class="login-anchor mx-3"
+                  >Login</a
+                >
+              </span>
+            </p>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+  </div>
+</div>

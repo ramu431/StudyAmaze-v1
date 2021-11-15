@@ -1,0 +1,44 @@
+.title-head{
+    font-size: 27px;
+    font-weight: 500;
+    letter-spacing:0.02em;
+    color:#00775F;
+}
+mat-form-field.example-full-width{
+    width:100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height:80px;
+}
+.registration-img{
+    width:100%;
+    
+    margin-top: 15%;
+}
+.mat-card{
+    background : lavendar;
+}
+.login-anchor{
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color:#00775F;
+}
+/* .example-card{
+    margin: 0px 15px;
+} */
+@media screen and (max-width: 600px) {
+    .example-card {
+      width: auto;
+      margin-top: 5%;
+      margin-bottom: 15%;
+    }
+    .login-img{
+        margin-top: 0%;
+    }
+    .mob-img-drop{
+        display: none;
+    }
+}
