@@ -180,3 +180,116 @@
     </div>
 
 </div>
+
+
+
+
+
+
+
+<!--<div class="star">
+    <div class="container-fluid mb-5">
+      <mat-tab-group>
+        <mat-tab label="Ongoing tests">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col">
+                <div class="py-2">
+                  <span class="title font-shadow"> Tests</span>
+                  <button class="btn btn-secondary btn-rounded pull-right add-asbtn" (click)="openDialog();">
+                    <span class=""> Add Test</span>
+                  </button>
+                </div>
+                <div style="min-height: 321px;"></div>
+              </div>
+              <div style="min-height: 277px;">
+                <div class="container-fluid-fluid">
+                  <div class="row" *ngIf="Tests">
+                    <div class="col-md-3 my-2 p-4" *ngFor="let a of Tests" (click)="ViewOrEditAssignment(a.tId)">
+                      <mat-card style="height:auto;" [ngStyle]="styleObject(a.subject)">
+                        <div class="p-0">
+                          <div class="py-1">
+                            <h4 class="title-sub">{{ a.title }}</h4>
+                          </div>
+                          <h5 class="py-1">
+                            {{ a.stdId }}-{{ a.subjectId }}-{{ a.topic }}
+                          </h5>
+                          <div class="py-1">
+                            <span class="">Questions :</span> {{ a.noOfQuestions }} 
+                            <span>Marks : {{ a.marks }}</span>
+                          </div>
+                          <div class="py-2">
+                            <small>
+                              <span class="">uploaded on </span>: {{ a.inTime | date:'dd-MM-yyyy' }}
+                            </small>
+                          </div>
+                          <div class="py-2">
+                            <small>
+                              <span class="">Start Date : </span> {{ a.startDateString }}
+                            </small>
+                          </div>
+                          <div class="py-2">
+                            <small>
+                              <span class="">End Date : </span>{{ a.endDateString }}
+                            </small>
+                          </div>
+                        </div>
+                      </mat-card>
+                    </div>
+                  </div>
+                  <div *ngIf="Tests.length == 0" class="row text-center my-5">
+                    <div #noData>
+                      No tests are Available
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Completed">
+          <div class="container-fluid">
+            <div *ngIf="expiredAssignments" class="row my-3">
+              <div class="col-md-3 my-2 assign-cards p-4" *ngFor="let a of expiredAssignments">
+                <mat-card style="height:auto" [ngStyle]="styleObject(a.subject)">
+                  <div class="p-0">
+                    <div class="py-1">
+                      <h3 class="title-sub ">{{ a.title }}</h3>
+                    </div>
+                    <h5 class="py-1">
+                      {{ a.standard }}-{{ a.subject }}-{{ a.topic }}
+                    </h5>
+                    <div class="py-1">
+                      <span class="">Questions :</span> {{ a.noOfQuestions }} 
+                      <span>Marks : {{ a.marks }}</span>
+                    </div>
+                    <div class="py-2">
+                      <small>
+                        <span class="">uploaded on </span>: {{ a.inTime | date:'dd-MM-yyyy' }}
+                      </small>
+                    </div>
+                    <div class="py-2">
+                      <small>
+                        <span class="">Start Date : </span> {{ a.startDate | date:'dd-MM-yyyy'}}
+                      </small>
+                    </div>
+                    <div class="py-2">
+                      <small>
+                        <span class="">End Date : </span>{{ a.endDate | date:'dd-MM-yyyy' }}
+                      </small>
+                    </div>
+                  </div>
+                </mat-card>
+              </div>
+            </div>
+            <div *ngIf="expiredAssignments.length == 0" class="row text-center my-5">
+              <div #noData>
+                No Assignments Available
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>  -->
+  

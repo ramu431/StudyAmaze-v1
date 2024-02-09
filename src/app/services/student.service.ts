@@ -21,7 +21,7 @@ export class StudentService {
   }
 
   getSubjectWisePercentage(userId,standardId){
-    return this.http.get(APIConfig.END_POINT + "qas/practice/subjectwisepercentage/" + userId+ "/"+standardId);
+    return this.http.get(APIConfig.END_POINT + "qas/practice/subjectwisepercentage/" + userId + "/"+standardId);
   }
 
   getStandwisePercentages(standardId,userId){
@@ -200,6 +200,11 @@ export class StudentService {
   getAssignmentsByInstStandardUser(inst,standard,user){
     return this.http.get(APIConfig.END_POINT + "qas/insti/getAssignmentsByITStandard/" + inst +"/" + standard + "/" + user)
   }
+//Ramu added service by 27/11/23
+  getAssignmentsBytoday(inst,standard,user,date){
+    return this.http.get(APIConfig.END_POINT + "qas/insti/getAssignments/" + inst +"/" + standard + "/" + user +"/"+date)
+  }
+
 
   getAssignmentQuestionsByAssignmentId(assignmentId,userid){
     return this.http.get(APIConfig.END_POINT + "qas/insti/getAssignmentQuestions/" + assignmentId + "/" + userid)
@@ -250,7 +255,7 @@ export class StudentService {
         'Access-Control-Allow-Origin':'*',
         // 'Authorization':'Bearer '+sessionStorage.getItem('token')
     });
-     return this.http.post(APIConfig.END_POINT1 + "teacher/addAbout/",about,{headers:headers})
+     return this.http.post(APIConfig.END_POINT1 + "teacher/addAbout",about,{headers:headers})
  }
 
  getUserRoleDetails(userId){

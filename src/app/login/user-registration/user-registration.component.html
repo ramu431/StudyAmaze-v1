@@ -172,7 +172,7 @@
                         matInput
                         type="text"
                         Placeholder="Email"
-                        formControlName="email"
+                        formControlName="emailId"
                       />
                     </mat-form-field>
                   </div>
@@ -244,6 +244,8 @@
                       </mat-error>
                     </mat-form-field>
                   </div>
+                  
+
                 </div>
   
                 <div class="row">
@@ -262,11 +264,12 @@
                         <mat-radio-button class="mx-2" value="female"
                           >Female</mat-radio-button
                         >
-                        <mat-radio-button class="mx-2" value="transgender"
+                      <!--  <mat-radio-button class="mx-2" value="transgender"
                           >Transgender</mat-radio-button
-                        >
+                        > -->
                       </mat-radio-group>
                     </div>
+                    
                   </div>
   
                   <div class="col-md-6">
@@ -286,6 +289,21 @@
                           Address required
                         </span>
                       </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field
+                      appearance="outline"
+                      class="example-full-width"
+                    >
+                      <mat-label>ReferalCode</mat-label>
+  
+                      <input
+                        matInput
+                        type="text"
+                        Placeholder="ReferalCode"
+                        formControlName="usedReferalCode"
+                      />
                     </mat-form-field>
                   </div>
                 </div>

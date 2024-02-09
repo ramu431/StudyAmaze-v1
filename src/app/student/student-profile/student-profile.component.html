@@ -1,119 +1,4 @@
-<!-- <div class="container-fluid mt-3">
 
-    <div class="row mx-2">
-
-        <mat-card class="p-0 js-sans">
-
-            <div class="container-fluid">
-
-                <div class="row border-bottom my-4">
-
-                    <h4>User Profile</h4>
-
-                </div>
-
-                <div class="row mx-auto text-center my-2">
-
-                    <div class="profile-img">
-                        <img [src]="profile.imageUri" class="img-responsive pro-img" alt="">
-                    </div>
-
-                </div>
-
-                <div class="row mx-auto text-center">
-
-                    <div class="col-4">
-
-                        <mat-form-field appearance="outline" class="full-width js-sans">
-
-                            <mat-label>Name</mat-label>
-
-                            <input type="text" [disabled]="isEdit" matInput placeholder="Name" [ngModel]="profile.userName">
-
-                        </mat-form-field>
-
-                    </div>
-
-                    <div class="col-4">
-
-                        <mat-form-field appearance="outline" class="full-width js-sans">
-
-                            <mat-label>Mobile</mat-label>
-
-                            <input type="text" [disabled]="isEdit" matInput placeholder="Mobile" [ngModel]="profile.mobileNo">
-
-                        </mat-form-field>
-
-                    </div>
-
-                    <div class="col-4">
-
-                        <mat-form-field appearance="outline" class="full-width js-sans">
-
-                            <mat-label>Gender</mat-label>
-
-                            <input type="text" [disabled]="isEdit" matInput placeholder="Name" [ngModel]="profile.gender">
-
-                        </mat-form-field>
-
-                    </div>
-
-                </div>
-
-                <div class="row mx-auto text-center">
-
-                    <div class="col-4">
-
-                        <mat-form-field appearance="outline" class="full-width js-sans">
-
-                            <mat-label>Date Of Birth</mat-label>
-
-                            <input type="text" [disabled]="isEdit" matInput placeholder="Date of birth" [ngModel]="profile.dob | date">
-
-                        </mat-form-field>
-
-                    </div>
-
-                    <div class="col-4">
-
-                        <mat-form-field appearance="outline" class="full-width js-sans">
-
-                            <mat-label>E-mail</mat-label>
-
-                            <input type="text" [disabled]="isEdit" matInput placeholder="E-mail" [ngModel]="profile.emailId">
-
-                        </mat-form-field>
-
-                    </div>
-
-                    <div class="col-4">
-
-                        <mat-form-field appearance="outline" class="full-width js-sans">
-
-                            <mat-label>Address</mat-label>
-
-                            <input type="text" [disabled]="isEdit" matInput placeholder="Address" [ngModel]="profile.address">
-
-                        </mat-form-field>
-
-                    </div>
-
-                </div>
-
-                <div class="my-2 mx-auto text-center">
-
-                    <button mat-raised-button class="mx-1" color="primary" (click)="isEdit = !isEdit"> Edit </button>
-                    <button mat-raised-button class="mx-1" color="primary"> Update </button>
-
-                </div>
-
-            </div>
-
-        </mat-card>
-
-    </div>
-
-</div> -->
 
 <div class="star">
   <div class="backCls mb-2 mx-3">
@@ -131,8 +16,8 @@
         <span class="nav">Account</span>
         <input class="nav" name="nav" type="radio">
         <span class="nav">Privacy</span>
-        <input class="nav" name="nav" type="radio">
-        <span class="nav">Advanced</span>
+       <!-- <input class="nav" name="nav" type="radio">
+        <span class="nav">Advanced</span>   -->
         <main class="content card">
           <section id="profile">
             <form>
@@ -279,8 +164,8 @@
                 <li class="padding">
                   <fieldset class="material-button">
                     <div>
-                      <button class="connect gh connected">
-                        <span>Unlink Github Account</span>
+                      <button class="connect gh"  onclick="window.open('https://github.com', '_blank');">
+                        <span>link Github Account</span>
                       </button>
                     </div>
                   </fieldset>
@@ -288,7 +173,8 @@
                 <li class="padding">
                   <fieldset class="material-button">
                     <div>
-                      <button class="connect tw">
+                      
+                        <button class="connect tw"  onclick="window.open('https://twitter.com', '_blank');">
                         <span>Link Twitter Account</span>
                       </button>
                     </div>
@@ -297,8 +183,17 @@
                 <li class="padding">
                   <fieldset class="material-button">
                     <div>
-                      <button class="connect fb">
+                      <button class="connect fb"  onclick="window.open('https://www.facebook.com', '_blank');">
                         <span>Link Facebook Account</span>
+                      </button>
+                    </div>
+                  </fieldset>
+                </li>
+                <li class="padding">
+                  <fieldset class="material-button"  onclick="window.open('https://in.linkedin.com', '_blank');">
+                    <div>
+                      <button class="connect li">
+                        <span>Link LinkedIn Account</span>
                       </button>
                     </div>
                   </fieldset>
@@ -306,8 +201,17 @@
                 <li class="padding">
                   <fieldset class="material-button">
                     <div>
-                      <button class="connect li">
-                        <span>Link LinkedIn Account</span>
+                      <button class="connect wa" onclick="window.open('https://api.whatsapp.com/send?text=Hello%20from%20my%20website', '_blank');">
+                        <span>Link WhatsApp Account</span>
+                      </button>
+                    </div>
+                  </fieldset>
+                </li>
+                <li class="padding">
+                  <fieldset class="material-button">
+                    <div>
+                      <button class="connect in"  onclick="window.open('https://www.instagram.com', '_blank');">
+                        <span>Link Istagram Account</span>
                       </button>
                     </div>
                   </fieldset>
@@ -325,36 +229,9 @@
           <section class="upcoming" id="privacy">
             <h4 class="font-weight-bold m-3">Coming&nbsp;soon!</h4>
           </section>
-          <section class="upcoming" id="advanced">
-            <!-- <h1>Coming&nbsp;soon!</h1> -->
-            <!-- <div class="about m-2">
-    
-              <mat-card>
-                <mat-card-title>About</mat-card-title><div class="container">
-                  <div class="row mt-4">
-                    <div class="col">
-                      <mat-form-field appearance="outline">
-                        <mat-label>Experience</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    </div>
-                    <div class="col">
-                      <mat-form-field appearance="outline">
-                        <mat-label>Outline form field</mat-label>
-                        <input matInput placeholder="Placeholder">
-                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                        <mat-hint>Hint</mat-hint>
-                      </mat-form-field>
-                    </div>
-                  </div>
-                </div>
-              </mat-card>
-    
-            </div> -->
-            <!-- <div class="example-action-buttons">
-              <button mat-button (click)="accordion.openAll()">Expand All</button>
-              <button mat-button (click)="accordion.closeAll()">Collapse All</button>
-            </div> -->
+           <!--
+		   <section class="upcoming" id="advanced">
+            
             <mat-accordion class="example-headers-align m-2" multi>
               <mat-expansion-panel>
                 <mat-expansion-panel-header>
@@ -432,37 +309,10 @@
   
               </mat-expansion-panel>
   
-              <!-- <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    Achievements
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    Add your achievements
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-  
-                <div *ngFor="let achievement of achievements; let i = index">
-                  <mat-form-field class="mx-1" appearance="outline">
-                    <mat-label>Title</mat-label>
-                    <input matInput>
-                  </mat-form-field>
-  
-                  <mat-form-field class="mx-1" appearance="outline" style="width:75%">
-                    <mat-label>Description</mat-label>
-                    <input matInput>
-                  </mat-form-field>
-                  <button mat-icon-button (click)="remove(i,'a')"> <i class="fas fa-times"></i> </button>
-                </div>
-  
-                <button mat-raised-button class="mx-2" (click)="add('a')">Add</button>
-                <button mat-raised-button class="mx-2">Save</button>
-  
-              </mat-expansion-panel> -->
             </mat-accordion>
   
   
-          </section>
+          </section>  -->
         </main>
       </div>
   

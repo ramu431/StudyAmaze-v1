@@ -88,11 +88,12 @@ mat-form-field.full-width{
     .settings {
       /* max-height: 420px; */
       max-height: 550px;
+      
    }
   }
   span.nav {
     transition: all 150ms ease-out;
-    flex-basis: 25%;
+    flex-basis: 33.33%;
     display: block;
     position: relative;
     width: 100%;
@@ -468,7 +469,7 @@ mat-form-field.full-width{
     color: white;
   }
   .material-button button.gh, .material-button input[type="submit"].gh {
-    background: #4183c4;
+    background: #4784c2;
   }
   .material-button button.gh:hover, .material-button input[type="submit"].gh:hover, .material-button button.gh:focus, .material-button input[type="submit"].gh:focus {
     background: #7ba9d6;
@@ -522,7 +523,7 @@ mat-form-field.full-width{
     background: #069;
   }
   .material-button button.li:hover, .material-button input[type="submit"].li:hover, .material-button button.li:focus, .material-button input[type="submit"].li:focus {
-    background: #0099e6;
+    background: #84c6e7;
   }
   .material-button button.li.connected, .material-button input[type="submit"].li.connected {
     background: #ebebeb;
@@ -535,6 +536,42 @@ mat-form-field.full-width{
   .material-button button.li:active, .material-button input[type="submit"].li:active {
     background: #00334d !important;
   }
+  .material-button button.wa, .material-button input[type="submit"].wa {
+    background: rgb(35, 22, 223);
+  }
+  .material-button button.wa:hover, .material-button input[type="submit"].wa:hover, .material-button button.li:focus, .material-button input[type="submit"].li:focus {
+    background: #4fb391;
+  }
+  .material-button button.wa.connected, .material-button input[type="submit"].wa.connected {
+    background: #ebebeb;
+    color: #343434;
+  }
+  .material-button button.wa.connected:hover, .material-button input[type="submit"].wa.connected:hover, .material-button button.li.connected:focus, .material-button input[type="submit"].li.connected:focus {
+    background: #069;
+    color: white;
+  }
+  .material-button button.wa:active, .material-button input[type="submit"].wa:active {
+    background: #7be0bf !important;
+  }
+
+  .material-button button.in, .material-button input[type="submit"].in {
+    background: rgb(68, 58, 209);
+  }
+  .material-button button.in:hover, .material-button input[type="submit"].in:hover, .material-button button.li:focus, .material-button input[type="submit"].li:focus {
+    background: #e65eb2;
+  }
+  .material-button button.in.connected, .material-button input[type="submit"].in.connected {
+    background: #ebebeb;
+    color: #343434;
+  }
+  .material-button button.in.connected:hover, .material-button input[type="submit"].in.connected:hover, .material-button button.li.connected:focus, .material-button input[type="submit"].li.connected:focus {
+    background: #069;
+    color: white;
+  }
+  .material-button button.in:active, .material-button input[type="submit"].in:active {
+    background: #7be0bf !important;
+  }
+
   .material-button.center div {
     display: flex;
     justify-content: center;

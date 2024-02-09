@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatStepper } from '@angular/material/stepper';
 import { StudentService } from 'src/app/services/student.service';
 import { TeacherService } from 'src/app/services/teacher.service';
@@ -15,7 +16,7 @@ export class PostTestsDialogComponent implements OnInit {
   @ViewChild('stepper') stepper: MatStepper;
 
   constructor( public dialogRef: MatDialogRef<PostTestsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,private student:StudentService,private teacher:TeacherService) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,private student:StudentService,private teacher:TeacherService,private snackbar:MatSnackBar) { }
 
   public title : any ;
   public teacherInfo : any= {
@@ -24,7 +25,9 @@ export class PostTestsDialogComponent implements OnInit {
     teacherName : null,
     subject : null,
     exp : null
-  }
+    }
+  generatedId : any ;
+  tIdfk : any;
   public teacherDetails : any ;
   public Teachers : any = [];
   isForEdit : boolean = false;
@@ -48,8 +51,8 @@ export class PostTestsDialogComponent implements OnInit {
       option_B:new FormControl('',Validators.required),
       option_C:new FormControl('',Validators.required),
       option_D:new FormControl('',Validators.required),
-      testIdfk:new FormControl(this.data,Validators.required),
-      tqId:new FormControl(0,Validators.required)
+      tIdfk:new FormControl(this.data,Validators.required)
+      //tqId:new FormControl(0,Validators.required)
     });
     if(this.data){
       console.log("edit");
@@ -89,8 +92,8 @@ export class PostTestsDialogComponent implements OnInit {
             marks:new FormControl(data['Post Test Info'].marks,Validators.required),
             startDate:new FormControl(data['Post Test Info'].startDate,Validators.required),
             endDate:new FormControl(data['Post Test Info'].endDate,Validators.required),
-            teacherIdFk:new FormControl(sessionStorage.getItem('userid'),Validators.required),
-            instiIdFk:new FormControl(5,Validators.required)
+            teacherIdFk:new FormControl(sessionStorage.getItem('userId'),Validators.required),
+            instiIdFk:new FormControl(sessionStorage.getItem('InstituteId'),Validators.required)
           });
         }
       );
@@ -112,7 +115,7 @@ export class PostTestsDialogComponent implements OnInit {
       startDate:new FormControl('',Validators.required),
       endDate:new FormControl('',Validators.required),
       teacherIdFk:new FormControl(sessionStorage.getItem('userid'),Validators.required),
-      instiIdFk:new FormControl(5,Validators.required)
+      instiIdFk:new FormControl(sessionStorage.getItem('InstituteId'),Validators.required)
     });
     this.student.getStandards()
     .subscribe(
@@ -149,31 +152,48 @@ export class PostTestsDialogComponent implements OnInit {
 
   addTest(){
     console.log(this.testForm.value);
+   // this.teacher.addTest(this.testForm.value)
+//.subscribe(
+   //   (data:any)=>{
+     //   console.log(data);
+       // if(data.status){
+         // // this.toastr.successToastr("Added Successfully");
+          //this.stepper.next();
+        //}else{
+         // // this.toastr.errorToastr("Something went wrong")
+     //   }
+      //}
+    //);
     this.teacher.addTest(this.testForm.value)
     .subscribe(
       (data:any)=>{
-        console.log(data);
         if(data.status){
-          // this.toastr.successToastr("Added Successfully");
+          this.tIdfk = this.QuestionData.value.tIdfk = data.id;
+
+          console.log("this.QuestionData.value.tIdfk:=-=-=-" + this.QuestionData.value.tIdfk  +  "------" + data.id +""  ) ;
+          this.snackbar.open("Added Successfully",'close',{duration: 3000});
           this.stepper.next();
         }else{
-          // this.toastr.errorToastr("Something went wrong")
+          this.snackbar.open("Something went wrong",'close',{duration: 3000})
         }
       }
     );
   }
 
-  addQuestion(){
-    console.log(this.QuestionData.value);
+ addQuestion(){
+    console.log("this.tIdfk =-=---- :-  " + this.tIdfk);
+    this.QuestionData.value.tIdfk = this.tIdfk;
+    console.log("this.QuestionData.value:===  " + this.QuestionData.value)
     this.teacher.addTestQuestions(this.QuestionData.value)
     .subscribe(
       (data:any)=>{
-        console.log(data);
+        console.log("addPostTestQuestion" +this.QuestionData.value.tIdfk);
         if(data.status){
-          // this.toastr.successToastr("Question Added");
-          this.teacher.getTestById(this.data)
+         
+          this.teacher.getTestById(this.tIdfk)
           .subscribe(
             (data:any)=>{
+              console.log(data);
               this.Questions = data['Test Questions'];
               if(data['Post Test Info'].noOfQuestions != data['Test Questions'].length){
                 this.postTest = true;
@@ -181,7 +201,7 @@ export class PostTestsDialogComponent implements OnInit {
             }
           );
         }else{
-          // this.toastr.errorToastr("Something went wrong")
+          this.snackbar.open("Something went wrong",'close',{duration: 3000})
         }
       }
     );

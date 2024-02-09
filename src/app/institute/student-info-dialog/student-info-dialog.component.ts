@@ -62,9 +62,9 @@ export class StudentInfoDialogComponent implements OnInit {
         console.log(data);
         if(data.status){
           this.onNoClick();
-          this.snackbar.open("student added succesfully",'close');
+          this.snackbar.open("student added succesfully",'close',{duration: 5000});
         }else{
-          this.snackbar.open("Some problem adding student",'close')
+          this.snackbar.open("Some problem adding student",'close',{duration: 5000})
         }
       }
     );

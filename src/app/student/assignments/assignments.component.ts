@@ -4,6 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 import { Location } from '@angular/common';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-assignments',
@@ -13,14 +15,27 @@ import { Location } from '@angular/common';
 export class AssignmentsComponent implements OnInit {
 
   assignments : any;
+  todayDate: string;
+todayAssignment: any;
+// dateObject: Date;
 
-  constructor(private _location:Location, private router:Router, private student:StudentService,private snackbar:MatSnackBar,private datepipe:DatePipe) {  }
 
-  ngOnInit(): void {
-    this.student.getAssignmentsByInstStandardUser(sessionStorage.getItem('instituteId'),sessionStorage.getItem('standard'),sessionStorage.getItem('userid')).subscribe(
-      (data:any)=>{
-        console.log(data);
-        this.assignments = data;
+
+  constructor(private _location:Location, private router:Router, private student:StudentService,private snackbar:MatSnackBar,private datepipe:DatePipe) { 
+
+    this.todayDate = this.datepipe.transform(new Date(), 'yyyy-MM-dd'); 
+    
+    // this.dateObject= moment( this.todayDate).toDate(),'yyyy-MM-dd';
+   }
+
+  ngOnInit() {
+    this.getAssignments();
+  }
+ // : void {
+ //  this.student.getAssignmentsByInstStandardUser(sessionStorage.getItem('instituteId'),sessionStorage.getItem('standard'),sessionStorage.getItem('userid')).subscribe(
+ //     (data:any)=>{
+ //       console.log(data);
+ //       this.assignments = data;
         // this.assignments.forEach(assignment=>{
         //   let today = new Date();
         //   console.log(this.datepipe.transform(assignment.endDate,'dd-MM-YYYY'),this.datepipe.transform(today,'dd-MM-YYYY'));
@@ -30,9 +45,30 @@ export class AssignmentsComponent implements OnInit {
         //     console.log('Expired');
         //   }
         // })
+ //     }
+ //   );
+ // }
+
+  getAssignments(){
+    this.student.getAssignmentsByInstStandardUser(sessionStorage.getItem('instituteId'),sessionStorage.getItem('standard'),sessionStorage.getItem('userid')).subscribe(
+      (data:any)=>
+      {
+        console.log(data);
+        this.assignments=data;
+        
       }
     );
+this.student.getAssignmentsBytoday(sessionStorage.getItem('instituteId'),sessionStorage.getItem('standard'),sessionStorage.getItem('userid'),this.todayDate).subscribe(
+  (data:any)=>
+  {
+    console.log(data);
+    this.todayAssignment=data;
+    
   }
+);
+
+    }
+
 
   styleObject(sub): Object {
     if (sub == 'Mathematics'){

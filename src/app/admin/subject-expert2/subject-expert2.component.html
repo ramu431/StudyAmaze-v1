@@ -92,25 +92,25 @@
             <span class="mx-2"><b>Type :</b> {{ question.type }}</span>
             <span class="pull-right pb-1">
               <button
-                (click)="approve(question.qid)"
+                (click)="approve(question.qId)"
                 class="mat-raised-button mx-1"
               >
                 Approve
               </button>
               <button
-                (click)="edit(question.qid)"
+                (click)="edit(question.qId)"
                 class="mat-raised-button mx-1"
               >
                 Edit
               </button>
               <button
-                (click)="modify(question.qid)"
+                (click)="modify(question.qId)"
                 class="mat-raised-button mx-1"
               >
                 Modify
               </button>
               <button
-                (click)="duplicate(question.qid)"
+                (click)="duplicate(question.qId)"
                 class="mat-raised-button mx-1"
               >
                 Duplicate
@@ -119,7 +119,7 @@
           </p>
           <hr />
 
-          <span class="quest mr-1"> {{ question.qid }}</span>
+          <span class="quest mr-1"> {{ question.qId }}</span>
           <span class="qcolor"
             ><ng-katex [equation]="question.question"></ng-katex
           ></span>

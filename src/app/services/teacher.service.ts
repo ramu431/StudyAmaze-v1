@@ -6,6 +6,9 @@ import  * as APIConfig  from './endPoint';
   providedIn: 'root'
 })
 export class TeacherService {
+  userProfile(userId: string) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private http:HttpClient) { }
 
@@ -25,6 +28,7 @@ export class TeacherService {
 
   //get assignments by teacher and institute id
   getAssignmentsByIT(instituteId,stdId,userId){
+    console.log(instituteId);
     return this.http.get(APIConfig.END_POINT +"qas/insti/getAssignmentsByITStandard/"+instituteId+"/"+stdId+"/"+userId);
   }
 
@@ -56,6 +60,10 @@ export class TeacherService {
   addAssignment(assignmentInfo){
     return this.http.post(APIConfig.END_POINT +"qas/insti/addAssignments",assignmentInfo);
   }
+  updateAssignment(assignmentInfo){
+    return this.http.put(APIConfig.END_POINT +"qas/insti/updateAssignments",assignmentInfo);
+  }
+
 
   // Add questions to assignment by id
   addAssignmentQuestions(question){
@@ -109,4 +117,21 @@ export class TeacherService {
     return this.http.post(APIConfig.END_POINT + "qas/insti/addReports",payload)
   }
 
+  teacherProfile(userId){  
+    return this.http.get(APIConfig.END_POINT1 + "users/info/" + userId);
+  }
+  uploadProfilePic(payload){
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin':'*',
+      'Authorization':'Bearer '+sessionStorage.getItem('token')
+  });
+    return this.http.post(APIConfig.END_POINT1 + "users/uploadProfilePic",payload,{headers:headers});
+  }
+  SaveOrUpdate(about){
+    const headers = new HttpHeaders({
+        'Access-Control-Allow-Origin':'*',
+        // 'Authorization':'Bearer '+sessionStorage.getItem('token')
+    });
+     return this.http.post(APIConfig.END_POINT1 + "teacher/addAbout",about,{headers:headers})
+ }
 }

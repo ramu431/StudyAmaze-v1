@@ -21,7 +21,9 @@ export class TeacherComponent implements OnInit {
   constructor(private router:Router,private teacher:TeacherService) { }
 
   sideNavData = [
+   
     { icon:'assignment' , name : 'Assignments', path:'/teacher/assignments' },
+    {icon:'person',name : 'Profile', path:'/teacher/profile' },
     { icon:'quiz' , name : 'Tests', path:'/teacher/tests' },
     { icon:'forum' , name : 'Forums' , path:'/teacher/forums' },
     { icon:'add' , name : 'Add Question' , path:'/teacher/add-question' },

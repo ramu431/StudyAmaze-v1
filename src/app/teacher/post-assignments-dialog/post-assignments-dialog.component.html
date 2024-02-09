@@ -45,20 +45,40 @@
 
                                     <div class="my-3 d-flex">
 
-                                        <div class="mx-2">
+                                      <div class="mx-2">
                                             Start Date <input formControlName="startDate" class="form-control mt-1"
-                                                type="date">
+                                                type="date" >
 
                                             No Of Questions <input formControlName="noOfQuestions"
                                                 class="form-control mt-1" type="text">
-                                        </div>
-
-                                        <div class="mx-2">
+                                        </div> 
+                                    
+                                    <div class="mx-2">
                                             End Date <input formControlName="endDate" class="form-control mt-1"
                                                 type="date">
 
                                             Marks <input formControlName="marks" class="form-control mt-1" type="text">
                                         </div>
+                                    
+                                    
+
+
+                                    <!--    <div class="mx-2">
+                                            Start Date <input formControlName="startDate" class="form-control mt-1"
+                                                type="date" id="startDate" placeholder="dd-MM-yyyy">
+                                            No Of Questions <input formControlName="noOfQuestions"
+                                                class="form-control mt-1" type="text">
+                                        </div>
+
+
+
+                                        <div class="mx-2">
+                                            End Date <input formControlName="endDate" class="form-control mt-1"
+                                                type="date" id="endDate" placeholder="dd-MM-yyyy">
+                                                Marks <input formControlName="marks" class="form-control mt-1" type="text">
+                                            </div>
+                                        
+                                        -->
 
                                         <div class="mx-2">
                                             Section <br>
@@ -72,47 +92,44 @@
                                             <!-- Marks <input formControlName="marks" class="form-control my-1" type="text"> -->
                                         </div>
 
-                                    </div>
+                                    </div> 
 
                                 </div>
                                 <div>
-                                    <button mat-button (click)="addorUpdateAssignment()">{{ isForEdit ? 'Update' : 'add'}}</button>
+                                    <button mat-button [disabled]="assignmentForm.invalid" (click)="AddorUpdateAssignment()">{{ isForEdit ?  'add' : 'Update' }}</button>
                                 </div>
                             </form>
                             <div>
                                 <!-- <button mat-button matStepperNext>Next</button> -->
                             </div>
                         </mat-step>
-
-                        <mat-step>
-                            <ng-template matStepLabel>Add Questions</ng-template>
-                            <div class="questions">
-                                <div class="" *ngIf="Questions.length">
-                                    <div class="py-2">
-                                        <p class="my-3" *ngFor="let q of Questions;let i=index">
-                                            <span>{{ i+1 }} . {{ q.question }}</span>
-                                            <!-- <button class="pull-right" mat-icon-button><i class="fas fa-trash"></i></button> -->
-                                        </p>
-                                        <!-- <button mat-stroked-button>Post assignment</button> -->
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Enter Question here</label>
-                                    <textarea [(ngModel)]="question" class="form-control"
-                                        id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    <button class="my-1" mat-stroked-button (click)="addQuestion()">Add</button>
-                                </div>
-                            </div>
-
-                            <div>
-                                <button mat-button matStepperPrevious>Back</button>
-                                <button mat-button matStepperNext (click)="getAssignmentInfo()">Next</button>
-                            </div>
-                        </mat-step>
-
+                                                               <!--*******************************-->
+     <mat-step>
+        <ng-template matStepLabel>Add Questions</ng-template>
+        <div class="">
+          <div class="" *ngIf="Questions.length">
+            <div class="py-2">questions
+              <p class="my-3" *ngFor="let q of Questions; let i = index">
+                <span>{{ i + 1 }} . {{ q.question }}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      
+        <div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Enter Question here</label>
+            <textarea [(ngModel)]="question" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <button class="my-1" mat-stroked-button [disabled]="Questions.length === (i + 1)" (click)="addQuestion()">Add</button>
+          </div>
+        </div>
+      
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext [disabled]="Questions.length === 0" (click)="getAssignmentInfo()">Next</button>
+        </div>
+      </mat-step>
+                                                          <!--*******************************-->
                         <mat-step>
                             <ng-template matStepLabel>
                                 <span (click)="getAssignmentInfo()">Review</span>
@@ -184,8 +201,7 @@
 
                                     </div>
                                     <div>
-                                        <button mat-button (click)="addAssignment()" [disabled]="assignmentForm.invalid"
-                                            *ngIf="!isEditable">add</button>
+                                        <button mat-button (click)="addAssignment()" [disabled]="assignmentForm.invalid" *ngIf="!isEditable">add</button>
                                     </div>
                                 </form>
 
@@ -208,12 +224,12 @@
 
                                 <h2 class="mx-1">{{ reviewAssignment?.assignmentInfo?.title }}</h2>
                                 <p class="bold"> 
-                                    <span class="mx-1">Class {{ reviewAssignment?.assignmentInfo?.standard }} ({{ reviewAssignment?.assignmentInfo?.section }})</span> 
+                                    <span class="mx-1">Class {{ reviewAssignment?.assignmentInfo?.standard }} : {{ reviewAssignment?.assignmentInfo?.section }}</span> 
                                     <span class="mx-1"> {{ reviewAssignment?.assignmentInfo?.subject }}</span> 
                                     <span class="mx-1">{{ reviewAssignment?.assignmentInfo?.topic }}</span> 
                                 </p>
                                 <p class="bold">
-                                    <span class="mx-1">Start Date : {{ reviewAssignment?.assignmentInfo?.startDate | date }}</span>
+                                    <span class="mx-1">Start Date : {{ reviewAssignment?.assignmentInfo?.startDate | date }} </span>
                                     <span class="mx-1">End Date : {{ reviewAssignment?.assignmentInfo?.endDate | date }}</span>
                                 </p>
                                 <p class="bold">

@@ -38,9 +38,9 @@ export class StudentDashboardComponent implements OnInit {
     this.student.getStudentDetails(this.userId).subscribe(
       (data:any)=>{
         console.log(data);
-        sessionStorage.setItem('isId',data[0].isId);
-        sessionStorage.setItem('instituteId',data[0].instiId);
-        sessionStorage.setItem('section',data[0].section);
+        sessionStorage.setItem('isId',data.isId);
+        sessionStorage.setItem('instituteId',data.instiId);
+        sessionStorage.setItem('section',data.section);
       }
     );
     this.student.getSubjectWisePercentage(this.userId,this.standardId).subscribe(

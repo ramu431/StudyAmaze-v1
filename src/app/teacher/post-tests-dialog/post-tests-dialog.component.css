@@ -20,7 +20,7 @@
   }
   
   ::ng-deep .icon-outside .mat-dialog-container {
-   overflow: unset
+   overflow: hidden
   }
 
 

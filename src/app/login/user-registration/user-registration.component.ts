@@ -51,6 +51,7 @@ export class UserRegistrationComponent implements OnInit {
       gender: ['', Validators.required],
       address: ['', Validators.required],
       dob: ['', [Validators.required]],
+      usedReferalCode: [''],
     },
     {
       validator: MustMatch('password', 'confirmPassword')
@@ -78,6 +79,7 @@ export class UserRegistrationComponent implements OnInit {
         std: ['', Validators.required],
         address: ['', Validators.required],
         dob: ['', [Validators.required]],
+        usedReferalCode: [''],
       },
       {
         validator: MustMatch('password', 'confirmPassword')

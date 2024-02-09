@@ -29,7 +29,7 @@ export class PostAssignmentsDialogComponent implements OnInit {
   generatedId : any ;
   public teacherDetails : any ;
   public Teachers : any = [];
-  isForEdit : boolean = false;
+  isForEdit : boolean = true;
   assignmentForm : FormGroup;
   standards = [];
   subjects = [];
@@ -40,7 +40,9 @@ export class PostAssignmentsDialogComponent implements OnInit {
   isEditable :boolean;
   postAssignment : boolean =false;
   reviewAssignment : any;
+  QuestionData: FormGroup;
   notFulFilled : boolean =true;
+  i: any;
 
   ngOnInit(): void {
     console.log(this.data)
@@ -61,7 +63,7 @@ export class PostAssignmentsDialogComponent implements OnInit {
           if(data.assignmentInfo.noOfQuestions != data.questions.length){
             this.postAssignment = true;
           }
-          this.student.getSubjectsById(data.assignmentInfo.stdId)
+          this.student.getSubjectsById(data.assignmentInfo.stdId)                                                                                                                                                                                  
           .subscribe(
             (data:any)=>{
               this.subjects=data;
@@ -74,7 +76,7 @@ export class PostAssignmentsDialogComponent implements OnInit {
             }
           );
           this.assignmentForm = new FormGroup({
-            aid:new FormControl(data.assignmentInfo.aid,Validators.required),
+            aId:new FormControl(data.assignmentInfo.aId,Validators.required),
             title:new FormControl(data.assignmentInfo.title,Validators.required),
             stdId:new FormControl(data.assignmentInfo.stdId,Validators.required),
             subjectId:new FormControl(data.assignmentInfo.subjectId,Validators.required),
@@ -150,11 +152,27 @@ export class PostAssignmentsDialogComponent implements OnInit {
     // this.teacherservice.addAssignment()
   }
 
-  addorUpdateAssignment(){
+ /* AddorUpdateAssignment(){
     console.log(this.assignmentForm.value);
     if(this.isForEdit){
       this.teacherservice.addAssignment(this.assignmentForm.value)
+     //this.teacherservice.rolloutAssignment(this.assignmentForm.value)
       .subscribe(
+      (data:any)=>{
+        console.log(data);
+        if(data.id){
+          this.generatedId = data.id;
+          this.snackbar.open("Added Successfully",'close',{duration: 3000});
+          this.stepper.next();
+        }else{
+          this.snackbar.open("Something went wrong",'close',{duration: 3000})
+        }
+        }
+      );
+    }else{
+    //this.teacherservice.addAssignment(this.assignmentForm.value)
+	this.teacherservice.rolloutAssignment(this.assignmentForm.value)
+    .subscribe(
         (data:any)=>{
           console.log(data);
           if(data.status){
@@ -163,24 +181,44 @@ export class PostAssignmentsDialogComponent implements OnInit {
           }else{
             this.snackbar.open('Something went wrong','close',{duration: 3000});
           }
-        }
-      );
-    }else{
-    this.teacherservice.addAssignment(this.assignmentForm.value)
-    .subscribe(
-      (data:any)=>{
-        console.log(data);
-        if(data.id){
-          this.generatedId = data.id
-          this.snackbar.open("Added Successfully",'close',{duration: 3000});
-          this.stepper.next();
-        }else{
-          this.snackbar.open("Something went wrong",'close',{duration: 3000})
-        }
       }
     );
     } 
   }
+*/
+
+AddorUpdateAssignment() {
+  console.log(this.assignmentForm.value);
+  
+  if (this.isForEdit) {
+
+      this.teacherservice.addAssignment(this.assignmentForm.value)
+      .subscribe((data: any) => {
+        console.log(data);
+        if (data.id) {
+          this.generatedId = data.id;
+          this.snackbar.open('Added Successfully', 'close', { duration: 3000 });
+          this.stepper.next();
+        } else {
+          this.snackbar.open('Something went wrong', 'close', { duration: 3000 });
+        }
+      });
+  } else {
+    this.teacherservice.updateAssignment(this.assignmentForm.value)
+    .subscribe((data: any) => {
+      console.log(data);
+      if (data.status === 'success') {
+        this.snackbar.open('Updated successfully', 'close', { duration: 3000 });
+        this.dialogRef.close();
+      } else {
+        this.snackbar.open('Something went wrong', 'close', { duration: 3000 });
+      }
+    });
+
+
+  }
+}
+
 
   getAssignmentInfo(){
     if(this.data){
@@ -234,7 +272,7 @@ export class PostAssignmentsDialogComponent implements OnInit {
   publishAssignment(i){
     console.log(i.assignmentInfo);
     let payload ={
-      "aid": i.assignmentInfo.aid,
+      "aId": i.assignmentInfo.aId,
       "endDate": i.assignmentInfo.endDate,
       "instiIdFk": i.assignmentInfo.instiIdFk,
       "marks": i.assignmentInfo.marks,
@@ -247,7 +285,8 @@ export class PostAssignmentsDialogComponent implements OnInit {
       "title": i.assignmentInfo.title,
       "topic": i.assignmentInfo.topic
     };
-    this.teacherservice.rolloutAssignment(payload).subscribe(
+    //this.teacherservice.rolloutAssignment(payload).subscribe(
+      this.teacherservice.updateAssignment(payload).subscribe(
       (data:any)=>{
         console.log(data);
         if(data.status){

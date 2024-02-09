@@ -15,11 +15,13 @@ import { PostAssignmentsComponent } from './post-assignments/post-assignments.co
 import { PostTestsComponent } from './post-tests/post-tests.component';
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { TeacherComponent } from './teacher.component';
+import { TeacherProfileComponent } from './teacher-profile/teacher-profile.component';
 
 const routes: Routes = [
   { path: '', component: TeacherComponent,
   children: [
     {path: 'assignments', component: PostAssignmentsComponent,canActivate:[AuthGuard]},
+    {path: 'profile', component: TeacherProfileComponent,canActivate:[AuthGuard]},
     {path: 'tests', component: PostTestsComponent,canActivate:[AuthGuard]},
     {path: 'forums' , component: ForumsComponent,canActivate:[AuthGuard]},
     {path: 'forum/:id' , component: ForumComponent,canActivate:[AuthGuard]},

@@ -18,6 +18,7 @@ export class AssignmentComponent implements OnInit {
   payload : any;
   feedback : any = [];
 
+
   ngOnInit(): void {
     const id = this.route.snapshot.params.id;
     this.student.getAssignmentQuestionsByAssignmentId(id,sessionStorage.getItem('userid')).subscribe((data:any)=>{
@@ -45,7 +46,7 @@ export class AssignmentComponent implements OnInit {
       (data:any)=>{
         console.log(data);
         if(data.status){
-          this.snackbar.open('File Uploaded Successfully','close');
+          this.snackbar.open('File Uploaded Successfully','close',{duration: 3000});
           this.router.navigate(['student/assignments'])
         }
       }

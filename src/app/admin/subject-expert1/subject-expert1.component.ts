@@ -122,17 +122,17 @@ export class SubjectExpert1Component implements OnInit {
           console.log(data);
           if(data.status){
                     console.log("200");
-                    this.snackbar.open("Question Approved",'close');
+                    this.snackbar.open("Question Approved",'close',{duration: 3000});
                   }
         },
         (error:any) => {
           console.log(error);
           console.log(error.status)
           if(error.status==500){
-            this.snackbar.open(error.status + ' - Internal Server Error','close');
+            this.snackbar.open(error.status + ' - Internal Server Error','close',{duration: 3000});
           }
           if(error.status == 417){
-            this.snackbar.open(error.status + ' - You can not approve your question','close');
+            this.snackbar.open(error.status + ' - You can not approve your question','close',{duration: 3000});
           }
         }
       );
@@ -151,17 +151,17 @@ export class SubjectExpert1Component implements OnInit {
           console.log(data);
           if(data.status){
                     console.log("200");
-                    this.snackbar.open("Question Approved",'close');
+                    this.snackbar.open("Question Approved",'close',{duration: 3000});
                   }
         },
         (error:any) => {
           console.log(error);
           console.log(error.status)
           if(error.status==500){
-            this.snackbar.open(error.status + ' - Internal Server Error','close');
+            this.snackbar.open(error.status + ' - Internal Server Error','close',{duration: 3000});
           }
           if(error.status == 417){
-            this.snackbar.open(error.status + ' - You can not approve your question','close');
+            this.snackbar.open(error.status + ' - You can not approve your question','close',{duration: 3000});
           }
         }
       );
@@ -178,17 +178,17 @@ export class SubjectExpert1Component implements OnInit {
           console.log(data);
           if(data.status){
                     console.log("200");
-                    this.snackbar.open("Question Approved",'close');
+                    this.snackbar.open("Question Approved",'close',{duration: 3000});
                   }
         },
         (error:any) => {
           console.log(error);
           console.log(error.status)
           if(error.status==500){
-            this.snackbar.open(error.status + ' - Internal Server Error','close');
+            this.snackbar.open(error.status + ' - Internal Server Error','close',{duration: 3000});
           }
           if(error.status == 417){
-            this.snackbar.open(error.status + ' - You can not approve your question','close');
+            this.snackbar.open(error.status + ' - You can not approve your question','close',{duration: 3000});
           }
         }
       );

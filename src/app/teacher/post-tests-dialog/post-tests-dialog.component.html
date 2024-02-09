@@ -24,8 +24,8 @@
                                         <select class="cust-select mx-2" formControlName="stdId"
                                             (change)="fetchSubjects()">
                                             <option value="" selected>Standard</option>
-                                            <option *ngFor="let s of standards" [ngValue]="s.standardId">Class {{
-                                                s.standard }}</option>
+                                            <option *ngFor="let s of standards" [ngValue]="s.standardId">{{ s.standard }}
+                                          </option>
                                         </select>
 
                                         <select class="cust-select mx-2" formControlName="subjectId"
@@ -37,7 +37,8 @@
 
                                         <select class="cust-select mx-2" formControlName="topic">
                                             <option value="" selected>Topic</option>
-                                            <option *ngFor="let s of topics" [ngValue]="s.topic">{{ s.topic }}</option>
+                                            <option *ngFor="let s of topics" [ngValue]="s.topic">{{ s.topic }}
+                                            </option>
                                         </select>
 
                                     </div>
@@ -75,12 +76,11 @@
 
                                 </div>
                                 <div>
-                                    <button mat-button (click)="addTest()" [disabled]="testForm.invalid"
-                                        *ngIf="isEditable">add</button>
+                                    <button mat-button (click)="addTest()" [disabled]="testForm.invalid"*ngIf="isEditable">add</button>
                                 </div>
                             </form>
                             <div>
-                                <!-- <button mat-button matStepperNext>Next</button> -->
+                            <!-- <button mat-button matStepperNext>Next</button> -->
                             </div>
                         </mat-step>
                         <mat-step [editable]="isEditable">
@@ -113,11 +113,7 @@
                             </div>
 
                             <div>
-                                <!-- <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Enter Question here</label>
-                                <textarea [(ngModel)]="question" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                <button class="my-1" mat-stroked-button (click)="addQuestion()">Add</button>
-                            </div> -->
+                                
                                 <form [formGroup]="QuestionData" *ngIf="postTest">
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Enter Question here</label>

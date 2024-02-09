@@ -17,7 +17,7 @@ export class PostAssignmentsComponent implements OnInit {
   question:any;
   showForm:boolean=false;
   standards = [];
-  subjects = [];
+  subjects = [];nf
   topics = [];
   assignments=[];
   standard:any='';
@@ -25,8 +25,6 @@ export class PostAssignmentsComponent implements OnInit {
   topic:any='';
   isEditable = true;
   assignmentForm : FormGroup ;
-
-  // FILTER variables
   institute : any;
   Teachers : any;
   teacher : any;
