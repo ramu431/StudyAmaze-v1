@@ -42,7 +42,7 @@
           </thead>
   
           <tbody>
-            <tr *ngFor="let question of fetchedQuestions; let i=index" (click)="practise(question.qid)">
+            <tr *ngFor="let question of fetchedQuestions; let i=index" (click)="practise(question.qId)">
               <td> {{i + 1}}</td>
   
               <td class="text-left">{{ question.title }} <small *ngIf="question.submition == true "

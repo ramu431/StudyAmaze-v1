@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "axe/forms": "off",
+    "button-type": "off",
+    "typescript-config/consistent-casing": "off",
+    "typescript-config/strict": "off",
+    "axe/text-alternatives": [
+      "default",
+      {
+        "image-alt": "off",
+        "frame-title": "off"
+      }
+    ],
+    "no-inline-styles": "off",
+    "axe/structure": "off",
+    "axe/name-role-value": "off"
+  }
+}

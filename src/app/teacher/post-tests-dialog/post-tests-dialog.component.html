@@ -60,7 +60,9 @@
                                         </div>
 
                                         <div class="mx-2">
+                                            Section <br>
                                             <select class="cust-select mx-2" formControlName="section">
+                                                <option value="">section</option>
                                                 <option value="A">A</option>
                                                 <option value="B">B</option>
                                                 <option value="C">C</option>
@@ -74,7 +76,7 @@
                                 </div>
                                 <div>
                                     <button mat-button (click)="addTest()" [disabled]="testForm.invalid"
-                                        *ngIf="!isEditable">add</button>
+                                        *ngIf="isEditable">add</button>
                                 </div>
                             </form>
                             <div>

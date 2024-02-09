@@ -64,7 +64,7 @@ export class AddQuestionComponent implements OnInit {
       chapter: [''],
       authorID:[0,Validators.required],
       question: ['',Validators.required],
-      // description: ['', Validators.required],
+      //description: ['', Validators.required],
       option_A: ['', Validators.required],
       option_B: ['', Validators.required],
       option_C: ['', Validators.required],
@@ -92,8 +92,8 @@ export class AddQuestionComponent implements OnInit {
     event.preventDefault();
     this.submitted = true;
     const postObject = {
-      ...this.registerForm.value
-      // "correctOption" : this.correctOptionsArray.toString(),
+      ...this.registerForm.value,
+     // "correctOption" : this.correctOptionsArray.toString(),
     }
     console.log(postObject);
     console.log("complete post object is: ", this.registerForm.value);
@@ -104,11 +104,11 @@ export class AddQuestionComponent implements OnInit {
       console.log("All the validations are valid, please wait posting the question to server...");
       this.teacher.postQuestion(postObject).subscribe(
         (res:any) => {
-          console.log(res);
+          console.log("post ------"+res);
           // this.router.navigate(['/pqtable']);
           this.showMsg= true;
           if(res.status){
-            this.snackbar.open('Question Added Successfully..' , 'close', {duration: 3000});
+            this.snackbar.open('Question Added Successfully..' , 'close', {duration: 5000});
           }
 
         },
